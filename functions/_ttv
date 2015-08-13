@@ -1,4 +1,13 @@
 #compdef ttv
 #autoload
 
-_arguments "1: :(`grep '.*' $TTVSTREAMS`)"
+local stream_file="$(<"$TTVSTREAMS")"
+local stream_array; stream_array=(${(f)stream_file});
+
+_arguments \
+	'*:: :->subcmds' && return 0
+
+if (( CURRENT == 1 )); then
+	_describe -t commands 'Followed Streams' stream_array
+	return
+fi
