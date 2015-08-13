@@ -1,0 +1,4 @@
+#compdef ttv
+#autoload
+
+_arguments "1: :(`grep '.*' $TTVSTREAMS`)"
