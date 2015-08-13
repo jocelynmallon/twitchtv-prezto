@@ -1,0 +1,12 @@
+# ------------------------------------------------------------------------------
+#   DESCRIPTION:  twitch.tv/livestreamer plugin file.
+#        AUTHOR:  Jocelyn Mallon
+#       VERSION:  0.0.2
+# ------------------------------------------------------------------------------
+
+if [[ ! $(command -v livestreamer) ]] || [[ $# -ne 1 ]]; then
+  echo "livestreamer not found, or no argument/name entered"
+  return 1
+else
+  exec livestreamer http://www.twitch.tv/$1 best &
+fi

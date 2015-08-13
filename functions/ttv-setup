@@ -1,0 +1,10 @@
+# wrapper function to download a users followed
+# streams from the twitch.tv api
+
+if [[ -z $1 ]]; then
+  echo "No user specified, please try again with a valid user name"
+  echo "    e.g.   ttv-setup username"
+  return 1
+else
+  ttv-check-user $1 && ttv-get-user-streams $1
+fi

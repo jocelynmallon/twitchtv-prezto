@@ -23,7 +23,7 @@ Commands/Usage:
 
 * ttv_setup *user* - downloads a list of channels the given user follows, and parse the list for use with zsh completion
 
-        ttv_setup your_twitch_username
+        ttv-setup your_twitch_username
 
 * ttv *stream* - used to open/watch the given stream using livestreamer
 

@@ -1,0 +1,8 @@
+# checks to make sure the given argument is
+# a valid twitch.tv user
+
+local ttv_user_response=$(curl -H 'Accept: application/vnd.twitchtv.v3+json' \
+-X GET https://api.twitch.tv/kraken/users/$1/)
+if [[ $ttv_user_response = *"404"* ]]; then
+  return 1
+fi

@@ -1,11 +1,23 @@
-# ------------------------------------------------------------------------------
-#          FILE:  ttv.zsh
-#   DESCRIPTION:  twitch.tv/livestreamer plugin file.
-#        AUTHOR:  Jocelyn Mallon
-#       VERSION:  0.0.2
-# ------------------------------------------------------------------------------
+# Provides twitch.tv/livestreamer functions
+#
+# Authors:
+#   Jocelyn Mallon
+#
 
-for file in $HOME/.zprezto/modules/twitchtv/functions/*.zsh; do
-  source $file
-done
+# Return if requirements are not found.
+if (( ! $+commands[livestreamer] )); then
+  return 1
+fi
 
+# Load dependencies.
+pmodload 'helper'
+
+# Set TTVSTREAMS to the default if unset.
+if [[ -z $TTVSTREAMS ]] ; then
+	export TTVSTREAMS="$HOME/.ttvstreams"
+fi
+
+# Create ttvstreams it if it doesn't exist
+if [[ ! -f $TTVSTREAMS ]]; then
+	touch $TTVSTREAMS
+fi

@@ -1,0 +1,3 @@
+if [[ -L $TTVSTREAMS ]]; then
+  TTVSTREAMS=$(readlink $TTVSTREAMS)
+fi
