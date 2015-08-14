@@ -1,8 +1,0 @@
-# Poll the twitch.tv api for the streams followed
-# by a given user, and save just the stream names
-# to a file for auto-completion use.
-
-ttv-check-symlink
-curl -H 'Accept: application/vnd.twitchtv.v3+json' \
--X GET https://api.twitch.tv/kraken/users/$1/follows/channels | \
-grep -ioR '"name":"[^,]*[^",]' | sed 's/"name":"//' | sed 's/(standard input)://' >! $TTVSTREAMS
