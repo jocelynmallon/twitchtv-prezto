@@ -8,6 +8,6 @@ _arguments \
   '*:: :->subcmds' && return 0
 
 if (( CURRENT == 1 )); then
-  _describe -t commands 'Followed Streams' stream_array
+  _describe -t commands 'Twitch.tv Streams' stream_array
   return
 fi
