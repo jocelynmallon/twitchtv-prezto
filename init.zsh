@@ -14,10 +14,10 @@ pmodload 'helper'
 
 # Set TTVSTREAMS to the default if unset.
 if [[ -z $TTVSTREAMS ]] ; then
-	export TTVSTREAMS="$HOME/.ttvstreams"
+  export TTVSTREAMS="$HOME/.ttvstreams"
 fi
 
 # Create ttvstreams it if it doesn't exist
 if [[ ! -f $TTVSTREAMS ]]; then
-	touch $TTVSTREAMS
+  touch $TTVSTREAMS
 fi

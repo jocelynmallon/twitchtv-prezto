@@ -5,11 +5,11 @@ local stream_file="$(<"$TTVSTREAMS")"
 local stream_array; stream_array=(${(f)stream_file});
 
 if [[ -z $1 ]] || [[ ! ${stream_array[(r)$1]} ]]; then
-	echo 'Invalid name, please provide a name for the stream to delete. For example:'
-	echo '  ttv-delete foo'
-	return 1
+  echo 'Invalid name, please provide a name for the stream to delete. For example:'
+  echo '  ttv-delete foo'
+  return 1
 else
-    ttv-check-symlink || return 1
-    sed -n -i .bak "/$stream_name/!p" "$TTVSTREAMS"
-    mv "${TTVSTREAMS}.bak" ~/.Trash/"ttvstreams"$(date +%H-%M-%S)
+  ttv-check-symlink || return 1
+  sed -n -i .bak "/$stream_name/!p" "$TTVSTREAMS"
+  mv "${TTVSTREAMS}.bak" ~/.Trash/"ttvstreams"$(date +%H-%M-%S)
 fi
