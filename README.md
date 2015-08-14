@@ -21,11 +21,15 @@ How to install
 Commands/Usage:
 ------
 
-* ttv *stream* - used to open/watch the given stream using livestreamer
+* ttv *stream* - used to open/watch the given twitch.tv stream using livestreamer.
 
-        ttv gamesdonequick
+        ttv gamesdonequick 
 
-* ttv-setup *user* - downloads a list of channels the given user follows, and parse the list for use with zsh completion
+    By default this opens the "source" quality stream, but you can choose lower quality options manually: (a)udio, (h)igh, (l)ow, (m)edium, (w)orst/mobile
+
+        ttv gamesdonequick h
+
+* ttv-setup *user* - downloads a list of channels the given user follows, and parse the list for use with zsh completion. **This always overwrites any existing list of streams**
 
         ttv-setup your_twitch_username
 
@@ -45,9 +49,9 @@ This requires livestreamer to be installed and in your system PATH. If you have 
         brew install python
         pip install livestreamer
 
-By default this plugin executes livestreamer as a background job, to not block use of your shell. You can change this by manually editing the ttv.zsh file, delete the trailing '&' from the following line:
+By default this plugin executes livestreamer as a background job, to not block use of your shell. You can change this by manually editing the ttv function file, delete the trailing '&' from the following line:
 
-        exec livestreamer http://www.twitch.tv/$1 best &
+        exec livestreamer http://www.twitch.tv/$stream_name $stream_qual &
 
 You can change the location of the cached streams list (default is $HOME/.ttvstreams) by adding the environment variable 'TTVSTREAMS' to your shell profile.
 
