@@ -13,11 +13,16 @@ fi
 pmodload 'helper'
 
 # Set TTVSTREAMS to the default if unset.
-if [[ -z $TTVSTREAMS ]] ; then
+if [[ -z $TTVSTREAMS ]]; then
   export TTVSTREAMS="$HOME/.ttvstreams"
 fi
 
-# Create ttvstreams it if it doesn't exist
+# Check if $TTVSTREAMS is a symlink.
+if [[ -L $TTVSTREAMS ]]; then
+  TTVSTREAMS=$(readlink $TTVSTREAMS)
+fi
+
+# Create ttvstreams if it doesn't exist.
 if [[ ! -f $TTVSTREAMS ]]; then
   touch $TTVSTREAMS
 fi
