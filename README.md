@@ -1,7 +1,7 @@
 twitch tv/livestreamer for prezto
 =========
 
-A simple prezto module for viewing twitch.tv streams with livestreamer
+A simple [prezto](https://github.com/sorin-ionescu/prezto) module for viewing [twitch.tv](http://www.twitch.tv) streams with [livestreamer.](http://livestreamer.readthedocs.org/en/latest/index.html#)
 
 How to install
 --------------
@@ -21,13 +21,21 @@ How to install
 Commands/Usage:
 ------
 
-* ttv_setup *user* - downloads a list of channels the given user follows, and parse the list for use with zsh completion
-
-        ttv-setup your_twitch_username
-
 * ttv *stream* - used to open/watch the given stream using livestreamer
 
         ttv gamesdonequick
+
+* ttv-setup *user* - downloads a list of channels the given user follows, and parse the list for use with zsh completion
+
+        ttv-setup your_twitch_username
+
+* ttv-save *stream* - manually add/save an entry to your cached/saved streams list.
+
+        ttv-save foo
+
+* ttv-delete *stream* - manually delete an entry from your cached/saved streams list.
+
+        ttv-delete foo
 
 Notes/Tips:
 -----------
