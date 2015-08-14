@@ -1,14 +1,13 @@
 # manually add/save an entry to TTVSTREAMS list
 
-local stream_name=$1
-local stream_file="$(<"$TTVSTREAMS")"
-local stream_array; stream_array=(${(f)stream_file});
-
 if [[ -z $1 ]] || [[ ! $# -eq 1 ]]; then
   echo "Invalid name, or no name specified, please provide a stream to save."
   echo "    e.g.   ttv-save foo"
   return 1
 else
+  local stream_name=$1
+  local stream_file="$(<"$TTVSTREAMS")"
+  local stream_array; stream_array=(${(f)stream_file});
   if [[ ${stream_array[(r)$stream_name]} ]]; then
     echo "stream already exists"
     return 1
