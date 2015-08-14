@@ -1,4 +1,4 @@
-#compdef ttv
+#compdef ttv ttv-delete
 #autoload
 
 local stream_file="$(<"$TTVSTREAMS")"
