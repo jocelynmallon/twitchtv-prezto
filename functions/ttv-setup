@@ -1,5 +1,5 @@
-# wrapper function to download a users followed
-# streams from the twitch.tv api
+# download a users followed streams using the twitch.tv api
+# and save the names to a local cache file for use with completion
 
 if [[ -z $1 ]] || [[ ! $# -eq 1 ]]; then
   echo "Invalid or no user specified, please try again with a valid user."
