@@ -37,7 +37,7 @@ Commands/Usage:
 
         ttv-save foo
 
-* ttv-delete *stream* - manually delete an entry from your cached/saved streams list. Acceptes multiple names/arguments to delete several streams at the same time.
+* ttv-delete *stream* - manually delete an entry from your cached/saved streams list. Can accept multiple names/arguments to delete several streams at the same time.
 
         ttv-delete foo
         ttv-delete foo bar foobar
