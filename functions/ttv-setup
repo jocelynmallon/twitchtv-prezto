@@ -7,7 +7,7 @@ if [[ -z $1 ]] || [[ ! $# -eq 1 ]]; then
   return 1
 else
   printf '%s\n' "verifying that ${1} is a real twitch.tv user..."
-  if [[ $(curl --silent -H 'Accept: application/vnd.twitchtv.v3+json' -X \
+  if [[ $(curl --progress-bar -H 'Accept: application/vnd.twitchtv.v3+json' -X \
     GET https://api.twitch.tv/kraken/users/$1/) = *"404"* ]]; then
     printf '%s\n' "Twitch API returned 404 for user ${1}"
     return 1
