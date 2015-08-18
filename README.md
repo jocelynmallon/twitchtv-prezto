@@ -27,7 +27,7 @@ Commands/Usage:
 
     Quality options can be supplied manually after the stream name:
 
-    a---Audio, h---High, l---Low, m---Medium, s---Source/best, w---Worst/mobile
+    (a)udio, (h)igh, (l)ow, (m)edium, (s)ource/best, (w)orst/mobile
 
         ttv gamesdonequick h
 
