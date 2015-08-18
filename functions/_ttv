@@ -3,6 +3,15 @@
 
 local stream_file="$(<"$TTVSTREAMS")"
 local stream_array; stream_array=(${(f)stream_file});
+local s_qual_array; s_qual_array=( "a|Audio only" "s|Source/Best" "h|High" "l|Low" "m|Medium" "w|Worst/Mobile" )
+stream_quality=()
+for quality_line in $s_qual_array; do
+	if [[ "$quality_line" == *"|"* ]] ; then
+		quality_name="${quality_line#*|}"
+		quality_path="${quality_line%%|*}"
+		stream_quality+="${quality_path}:${quality_name}"
+	fi
+done
 
 _arguments \
   '*:: :->subcmds' && return 0
@@ -10,4 +19,6 @@ _arguments \
 if (( CURRENT == 1 )); then
   _describe -t commands 'Twitch.tv Streams' stream_array
   return
+elif (( CURRENT == 2 )); then
+  _describe -t commands 'Quality Options' stream_quality
 fi

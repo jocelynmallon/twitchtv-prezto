@@ -25,9 +25,16 @@ Commands/Usage:
 
         ttv gamesdonequick 
 
-    By default this opens the "source" quality stream, but you can choose lower quality options manually: (a)udio, (h)igh, (l)ow, (m)edium, (w)orst/mobile
+    Quality options can be supplied manually after the stream name. If quality is omitted/left blank, the script will open the "Source" quality stream by default.
 
         ttv gamesdonequick h
+
+    * a  -  Audio
+    * h  -  High
+    * l  -  Low
+    * m  -  Medium
+    * s  -  Source/best
+    * w  -  Worst/mobile
 
 * ttv-setup *user* - downloads a list of channels the given user follows, and parse the list for use with zsh completion. **This always overwrites any existing list of streams**
 

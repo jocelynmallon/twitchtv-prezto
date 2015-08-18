@@ -4,8 +4,8 @@
 if [[ $# -eq 0 ]] || [[ $# -gt 2 ]]; then
   echo "Invalid arguments provided, usage:"
   echo "    e.g.   ttv stream_name quality"
-  echo "quality options: (a)udio, (h)igh, (l)ow, (m)edium, (w)orst/mobile"
-  echo "leave the quality option blank for \"Source/best\" quality."
+  echo "quality options: (a)udio, (h)igh, (l)ow, (m)edium, (w)orst/mobile (s)ource/Best"
+  echo "will use \"Source\" quality by default if no option is provided."
   echo "    e.g.   ttv stream"
   return 1
 else
@@ -13,6 +13,7 @@ else
   local stream_qual=$1
   case $stream_qual in
       "") stream_qual="best" ;;
+    [sS]) stream_qual="best" ;;
     [aA]) stream_qual="audio" ;;
     [hH]) stream_qual="high" ;;
     [lL]) stream_qual="low" ;;
