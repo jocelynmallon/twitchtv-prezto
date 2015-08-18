@@ -33,7 +33,7 @@ Commands/Usage:
 
     If quality is omitted/left blank, the script will open the "Source" quality stream by default.
 
-* ttv-setup *user* - downloads a list of channels the given user follows, and parse the list for use with zsh completion. **This always overwrites any existing list of streams**
+* ttv-setup *user* - downloads a list of channels the given user follows, and parse the list for use with zsh completion. This only saves new/unique entries, so you can combine lists from multiple users (by running this command multiple times) without duplicate entries being saved.
 
         ttv-setup your_twitch_username
 

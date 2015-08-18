@@ -13,9 +13,17 @@ else
     return 1
   else
     printf '%s\n' "downloading list of followed streams for ${1}..."
-    curl --progress-bar -H 'Accept: application/vnd.twitchtv.v3+json' \
-    -X GET https://api.twitch.tv/kraken/users/$1/follows/channels | \
-    grep -io '"name":"[^,]*[^",]' | sed 's/"name":"//' | \
-    sed 's/(standard input)://' >! $TTVSTREAMS
+    local stream_file="$(<"$TTVSTREAMS")"
+    local stream_array; stream_array=(${(f)stream_file});
+    local new_streams="$(curl --progress-bar -H 'Accept: \
+    application/vnd.twitchtv.v3+json' -X GET \
+    https://api.twitch.tv/kraken/users/$1/follows/channels | \
+    grep -io '"name":"[^,]*[^",]' | sed 's/"name":"//')"
+    local new_lines; new_lines=(${(f)new_streams})
+    for line in "${new_lines[@]}"; do
+      if [[ ! ${stream_array[(r)$line]} ]]; then
+        eval "printf '%s\n' \"$line\"" >> $TTVSTREAMS
+    	fi
+    done
   fi
 fi
