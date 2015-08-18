@@ -2,11 +2,11 @@
 # as stream name and quality level
 
 if [[ $# -eq 0 ]] || [[ $# -gt 2 ]]; then
-  echo "Invalid arguments provided, usage:"
-  echo "    e.g.   ttv stream_name quality"
-  echo "quality options: (a)udio, (h)igh, (l)ow, (m)edium, (w)orst/mobile (s)ource/Best"
-  echo "will use \"Source\" quality by default if no option is provided."
-  echo "    e.g.   ttv stream"
+  printf '%s\n' "Invalid arguments provided, usage:"
+  printf '%s\n' "    e.g.   ttv stream_name quality"
+  printf '%s\n' "quality options: (a)udio, (h)igh, (l)ow, (m)edium, (w)orst/mobile (s)ource/Best"
+  printf '%s\n' "\"Source\" quality will be used by default if no option is provided."
+  printf '%s\n' "    e.g.   ttv stream"
   return 1
 else
   local stream_name=$1; shift
@@ -19,7 +19,7 @@ else
     [lL]) stream_qual="low" ;;
     [mM]) stream_qual="medium" ;;
     [wW]) stream_qual="worst" ;;
-       *) echo "Invalid quality option." && return 1 ;;
+       *) eval "printf '%s\n' \"Invalid quality option.\"" && return 1 ;;
   esac
   exec livestreamer http://www.twitch.tv/$stream_name $stream_qual &
 fi

@@ -1,18 +1,18 @@
 # manually add/save an entry to TTVSTREAMS list
 
 if [[ -z $1 ]] || [[ ! $# -eq 1 ]]; then
-  echo "Invalid name, or no name specified, please provide a stream to save."
-  echo "    e.g.   ttv-save foo"
+  printf '%s\n' "Invalid name, or no name specified, please provide a stream to save."
+  printf '%s\n' "    e.g.   ttv-save foo"
   return 1
 else
   local stream_name=$1
   local stream_file="$(<"$TTVSTREAMS")"
   local stream_array; stream_array=(${(f)stream_file});
   if [[ ${stream_array[(r)$stream_name]} ]]; then
-    echo "stream already exists"
+    printf '%s\n' "stream already exists, skipping."
     return 1
   else
-    echo $stream_name >> $TTVSTREAMS
-    echo "Stream '$stream_name' saved"
+    eval "printf '%s\n' \"$stream_name\"" >> $TTVSTREAMS
+    printf '%s\n' "Stream '$stream_name' saved"
   fi
 fi

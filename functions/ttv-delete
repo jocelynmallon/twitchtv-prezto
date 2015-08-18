@@ -1,8 +1,8 @@
 # manually remove entries from TTVSTREAMS list
 
 if [[ "$#" == "0" ]]; then
-  echo "No input; please provide a name for the stream to delete."
-  echo "    e.g.   ttv-delete foo"
+  printf '%s\n' "No input; please provide a name for the stream to delete."
+  printf '%s\n' "    e.g.   ttv-delete foo"
   return 1
 else
   cp "${TTVSTREAMS}" "${TTVSTREAMS}.bak"
@@ -12,7 +12,7 @@ else
   while (( $# )); do
     stream_name=$1
     if [[ ! ${stream_array[(r)$stream_name]} ]]; then
-      echo "\"${stream_name}\" not found in saved list, skipping."
+      eval "printf '%s\n' \"'${stream_name}' not found in saved list, skipping.\""
     else
       stream_array=(${stream_array[@]/$stream_name})
     fi

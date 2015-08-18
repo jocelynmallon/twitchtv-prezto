@@ -2,17 +2,17 @@
 # and save the names to a local cache file for use with completion
 
 if [[ -z $1 ]] || [[ ! $# -eq 1 ]]; then
-  echo "Invalid or no user specified, please try again with a valid user."
-  echo "    e.g.   ttv-setup username"
+  printf '%s\n' "Invalid or no user specified, please try again with a valid user."
+  printf '%s\n' "    e.g.   ttv-setup username"
   return 1
 else
-  echo "verifying that ${1} is a real twitch.tv user..."
+  printf '%s\n' "verifying that ${1} is a real twitch.tv user..."
   if [[ $(curl --silent -H 'Accept: application/vnd.twitchtv.v3+json' -X \
     GET https://api.twitch.tv/kraken/users/$1/) = *"404"* ]]; then
-    echo "Twitch API returned 404 for user ${1}"
+    printf '%s\n' "Twitch API returned 404 for user ${1}"
     return 1
   else
-    echo "downloading list of followed streams for ${1}..."
+    printf '%s\n' "downloading list of followed streams for ${1}..."
     curl --silent -H 'Accept: application/vnd.twitchtv.v3+json' \
     -X GET https://api.twitch.tv/kraken/users/$1/follows/channels | \
     grep -io '"name":"[^,]*[^",]' | sed 's/"name":"//' | \
