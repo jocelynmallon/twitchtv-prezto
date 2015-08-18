@@ -1,19 +1,23 @@
-# manually remove an entry from TTVSTREAMS list
+# manually remove entries from TTVSTREAMS list
 
-
-if [[ -z $1 ]]; then
+if [[ "$#" == "0" ]]; then
   echo "No input; please provide a name for the stream to delete."
   echo "    e.g.   ttv-delete foo"
   return 1
 else
-  local stream_name=$1
+  cp "${TTVSTREAMS}" "${TTVSTREAMS}.bak"
+  local stream_name
   local stream_file="$(<"$TTVSTREAMS")"
   local stream_array; stream_array=(${(f)stream_file});
-  if [[ ! ${stream_array[(r)$stream_name]} ]]; then
-    echo "\"${stream_name}\" not found in saved list, aborting."
-    return 1
-  else
-    sed -n -i .bak "/$stream_name/!p" "$TTVSTREAMS"
-    mv "${TTVSTREAMS}.bak" ~/.Trash/"ttvstreams"$(date +%H-%M-%S)
-  fi
+  while (( $# )); do
+    stream_name=$1
+    if [[ ! ${stream_array[(r)$stream_name]} ]]; then
+      echo "\"${stream_name}\" not found in saved list, skipping."
+    else
+      stream_array=(${stream_array[@]/$stream_name})
+    fi
+    shift
+  done
+  eval "printf '%s\n' \"\${stream_array[@]}\"" >! $TTVSTREAMS
+  mv "${TTVSTREAMS}.bak" ~/.Trash/"ttvstreams"$(date +%H-%M-%S)
 fi
