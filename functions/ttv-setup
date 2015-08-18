@@ -13,7 +13,7 @@ else
     return 1
   else
     printf '%s\n' "downloading list of followed streams for ${1}..."
-    curl --silent -H 'Accept: application/vnd.twitchtv.v3+json' \
+    curl --progress-bar -H 'Accept: application/vnd.twitchtv.v3+json' \
     -X GET https://api.twitch.tv/kraken/users/$1/follows/channels | \
     grep -io '"name":"[^,]*[^",]' | sed 's/"name":"//' | \
     sed 's/(standard input)://' >! $TTVSTREAMS
