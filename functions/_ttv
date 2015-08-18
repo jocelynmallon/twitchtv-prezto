@@ -1,0 +1,13 @@
+#compdef ttv
+#autoload
+
+local stream_file="$(<"$TTVSTREAMS")"
+local stream_array; stream_array=(${(f)stream_file});
+
+_arguments \
+  '*:: :->subcmds' && return 0
+
+if (( CURRENT == 1 )); then
+  _describe -t commands 'Twitch.tv Streams' stream_array
+  return
+fi
