@@ -21,7 +21,7 @@ else
     grep -io '"name":"[^,]*[^",]' | sed 's/"name":"//')"
     local new_lines; new_lines=(${(f)new_streams})
     for line in "${new_lines[@]}"; do
-      if [[ ! ${stream_array[(r)$line]} ]]; then
+      if [[ -z ${stream_array[(r)$line]} ]]; then
         eval "printf '%s\n' \"$line\"" >> $TTVSTREAMS
     	fi
     done
