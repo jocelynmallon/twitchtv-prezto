@@ -1,7 +1,7 @@
 twitch tv/livestreamer for prezto
 =========
 
-A simple [prezto](https://github.com/sorin-ionescu/prezto) module for viewing [twitch.tv](http://www.twitch.tv) streams with [livestreamer.](http://livestreamer.readthedocs.org/en/latest/index.html#)
+A simple [prezto](https://github.com/sorin-ionescu/prezto) module for viewing [twitch.tv](http://www.twitch.tv) streams with [streamlink.](https://streamlink.github.io)
 
 How to install
 --------------
@@ -21,9 +21,9 @@ How to install
 Commands/Usage:
 ------
 
-* ttv *stream* - used to open/watch the given twitch.tv stream using livestreamer.
+* ttv *stream* - used to open/watch the given twitch.tv stream using streamlink.
 
-        ttv gamesdonequick 
+        ttv gamesdonequick
 
     Quality options can be supplied manually after the stream name:
 
@@ -49,14 +49,14 @@ Commands/Usage:
 Notes/Tips:
 -----------
 
-This requires livestreamer to be installed and in your system PATH. If you have issues with permissions due to the default OSX python setup, I suggest installing a new copy of python via homebrew, reload your shell, then install livestreamer with pip.
+This requires streamlink to be installed and in your system PATH. If you have issues with permissions due to the default OSX python setup, I suggest installing a new copy of python via homebrew, reload your shell, then install streamlink with homebrew (or pip.)
 
         brew install python
-        pip install livestreamer
+        brew install streamlink
 
-By default this plugin executes livestreamer as a background job, to not block use of your shell. You can change this by manually editing the ttv function file, delete the trailing '&' from the following line:
+By default this plugin executes streamlink as a background job, to not block use of your shell. You can change this by manually editing the ttv function file, delete the trailing '&' from the following line:
 
-        exec livestreamer http://www.twitch.tv/$stream_name $stream_qual &
+        exec stream_name http://www.twitch.tv/$stream_name $stream_qual &
 
 You can change the location of the cached streams list (default is $HOME/.ttvstreams) by adding the environment variable 'TTVSTREAMS' to your shell profile.
 

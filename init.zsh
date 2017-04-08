@@ -5,7 +5,7 @@
 #
 
 # Return if requirements are not found.
-if (( ! $+commands[livestreamer] )); then
+if (( ! $+commands[streamlink] )); then
   return 1
 fi
 
