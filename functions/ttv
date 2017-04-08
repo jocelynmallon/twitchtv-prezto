@@ -21,5 +21,5 @@ else
     [wW]) stream_qual="worst" ;;
        *) eval "printf '%s\n' \"Invalid quality option.\"" && return 1 ;;
   esac
-  exec livestreamer http://www.twitch.tv/$stream_name $stream_qual &
+  exec streamlink http://www.twitch.tv/${stream_name} ${stream_qual} &
 fi
