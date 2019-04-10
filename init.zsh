@@ -9,9 +9,6 @@ if (( ! $+commands[streamlink] )); then
   return 1
 fi
 
-# Load dependencies.
-pmodload 'helper'
-
 # Set TTVSTREAMS to the default if unset.
 if [[ -z $TTVSTREAMS ]]; then
   export TTVSTREAMS="$HOME/.ttvstreams"
